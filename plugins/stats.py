@@ -21,11 +21,11 @@ from userge.utils import mention_html, time_formatter
     },
 )
 async def get_stats_(message: Message):
-    """get info about your TG account"""
+    """Obtenha informações sobre sua conta no Telegram"""
     start = time.time()
     await message.edit(
-        "💁‍♂️ `Collecting your Telegram Stats ...`\n"
-        "<b>Please wait it will take some time</b>"
+        "📂 `Coletando informações de sua conta no Telegram, aguarde...`\n"
+        "<b>Esse processo pode levar um tempinho.</b>"
     )
     owner = await userge.get_me()
     u_mention = mention_html(owner.id, owner.first_name)
