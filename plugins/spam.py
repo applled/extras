@@ -47,7 +47,7 @@ async def spam(message: Message):
                 f"Spammed Sticker in Chat» {message.chat.title}, {count} times"
             )
             await message.delete()
-        elif replied.animation or replied.video or replied.photo:
+        elif replied.animation or replied.video or replied.animation or replied.photo:
             dls = await message.client.download_media(
                 message=message.reply_to_message, file_name=Config.DOWN_PATH
             )
@@ -64,7 +64,12 @@ async def spam(message: Message):
                 return
             await message.edit(f"Spamming {count} times")
             for _ in range(count):
-                await message.client.send_cached_media(message.chat.id, to_spam)
+                if not replied.animation and not replied.video:
+                    await message.client.send_cached_media(message.chat.id, to_spam)
+                elif replied.animation:
+                    await message.client.send_animation(message.chat.id, dls)
+                elif replied.video:
+                    await message.client.send_video(message.chat.id, dls)
                 await asyncio.sleep(delay)
             await S_LOG.log(
                 f"Spammed Media in Chat» {message.chat.title}, {count} times"
