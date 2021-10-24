@@ -95,7 +95,6 @@ async def get_stats_(message: Message):
     results += f"\n⏳ <i>Process took: {time_formatter(end - start)}.</i>"
     await message.edit(results)
 
-
 #  https://git.colinshark.de/PyroBot/PyroBot/src/branch
 #  /master/pyrobot/modules/admin.py#L69
 async def admin_check(chat_id: int, user_id: int) -> bool:
