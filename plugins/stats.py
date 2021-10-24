@@ -1,8 +1,8 @@
-"""Get Your Telegram Stats"""
+"""Estatísticas do usuário no Telegram"""
 
-# For USERGE-X
-# Idea : https://github.com/kantek/.../kantek/plugins/private/stats.py
-# Module By: github/code-rgb [TG - @DeletedUser420]
+# Originalmente do USERGE-X / Adaptado para o AppleBot
+# Criador a partir de: https://github.com/kantek/.../kantek/plugins/private/stats.py
+# Módulo criado por: github/code-rgb [TG - @DeletedUser420]
 
 
 import asyncio
@@ -16,8 +16,8 @@ from userge.utils import mention_html, time_formatter
 @userge.on_cmd(
     "stats",
     about={
-        "header": "Get your Telegram Stats like no. Groups, Channels etc.",
-        "usage": "{tr}stats",
+        "título": "Suas informações no Telegram sobre grupos, canais e etc.",
+        "como usar": "{tr}stats",
     },
 )
 async def get_stats_(message: Message):
@@ -74,25 +74,25 @@ async def get_stats_(message: Message):
         await asyncio.sleep(e.x + 5)
 
     results = f"""
-📊 <b><u>Telegram Stats</u></b>
-👤 User:  <b>{u_mention}</b>
+📊 <b><u>Suas Estatísitas do Telegram</u></b>
+👤 Usuário:  <b>{u_mention}</b>
 
-<b>Private Chats:</b> <code>{private_chats}</code><code>
-    • Users: {users_}
-    • Bots: {bots}</code>
-<b>Groups:</b> <code>{groups}</code>
-<b>Channels:</b> <code>{channels}</code>
-<b>Admin in Groups:</b> <code>{groups_admin}</code><code>
-    ★ Creator: {groups_creator}
-    • Admin Rights: {groups_admin - groups_creator}</code>
-<b>Admin in Channels:</b> <code>{channels_admin}</code><code>
-    ★ Creator: {channels_creator}
-    • Admin Rights: {channels_admin - channels_creator}</code>
-<b>Unread Messages:</b> <code>{unread_msg}</code>
-<b>Unread Mentions:</b> <code>{unread_mentions}</code>
+<b>Conversas Privadas:</b> <code>{private_chats}</code><code>
+    Com usuários: {users_}
+    com bots: {bots}</code>
+<b>Grupos:</b> <code>{groups}</code>
+<b>Canais:</b> <code>{channels}</code>
+<b>Admin de <code>{groups_admin}</code> grupos
+    - Você criou: {groups_creator}
+    • Como Admin em: {groups_admin - groups_creator}</code>
+<b>Admin de</b> <code>{channels_admin}</code> canais
+    - Você criou: {channels_creator}
+    • Como Admin: {channels_admin - channels_creator}</code>
+<b>Mensagens que você nem ao menos leu:</b> <code>{unread_msg}</code>
+<b>Mencionaram você e tu nem viu:</b> <code>{unread_mentions}</code>
 """
     end = time.time()
-    results += f"\n⏳ <i>Process took: {time_formatter(end - start)}.</i>"
+    results += f"\n <i>Tempo deste processo foi: {time_formatter(end - start)}.</i>"
     await message.edit(results)
 
 #  https://git.colinshark.de/PyroBot/PyroBot/src/branch
